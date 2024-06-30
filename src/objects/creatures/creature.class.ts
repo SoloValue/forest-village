@@ -3,6 +3,7 @@ import { GatherableResources, CreatureStats } from "./creatures";
 export abstract class Creature {
   public abstract name: string;
   public abstract stats: CreatureStats;
+  public abstract race_name: string;
 
   public get gathered_resources(): GatherableResources {
     return this.stats.gather;

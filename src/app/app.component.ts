@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { GatherableResources } from '../objects/creatures/creatures';
 import { BushFarm } from '../objects/structures/bush-farm.class';
 import { Structure } from '../objects/structures/structure.class';
+import { ShopComponent } from './components/shop/shop.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, ShopComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

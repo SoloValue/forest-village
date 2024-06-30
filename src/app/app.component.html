@@ -10,7 +10,10 @@
   <h3>Population</h3>
   <ul>
     @for (creature of population; track $index) {
-    <li>{{creature.name}}</li>
+    <li>
+      <img [src]="'assets/icons/creatures/' + creature.race_name + '.svg'" width="20" />
+      {{creature.name}}
+    </li>
     }
   </ul>
 
@@ -20,6 +23,8 @@
     <li>{{structure.name}}</li>
     }
   </ul>
+
+  <app-shop />
 
   <button (click)="nextDay()">Next Day</button>
 </main>

@@ -39,7 +39,7 @@ export class Village {
   private payMaintenance: GameEventFunction = (game_state) => {
     let tot_cost = 0;
     for (let structure of this.structures) {
-      tot_cost += structure.base_maintainance;
+      tot_cost += structure.maintenance;
     }
     this.stored_resources.gold = (this.stored_resources.gold || 0) - tot_cost;
   }

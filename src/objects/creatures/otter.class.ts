@@ -4,6 +4,7 @@ import { CreatureStats } from "./creatures";
 export class Otter extends Creature {
   public override name: string;
   public override stats: CreatureStats;
+  public override race_name = "otter";
 
   private _available_names: string[] = ['Sir. Otter III', 'Oswald', 'Odessa', 'Olive', 'Otis', 'Opal', 'Pascal'];
 
