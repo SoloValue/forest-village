@@ -1,14 +1,23 @@
 import { Creature } from "./creatures/creature.class";
-import { GatherableResources } from "./creatures/creatures";
+import { Resources } from "./village";
 import { GameEventFunction } from "./game";
 import { Game } from "./game.class";
 import { Structure } from "./structures/structure.class";
 
 export class Village {
   public name: string = "The village in the forest";
+  public total_space: number = 8;
+  public get used_space(): number {
+    let occ_space = 0;
+    for (let creature of this.population) {
+      occ_space += creature.stats.base_requirements.space;
+    }
+    return occ_space;
+  }
+
   public population: Creature[] = [];
   public structures: Structure[] = [];
-  public stored_resources: GatherableResources = {};
+  public stored_resources: Resources = {};
 
   constructor() {
     this.stored_resources.food = 100;
@@ -21,7 +30,7 @@ export class Village {
   }
 
   private gatherResources = (game_state: Game) => {
-    let gatherd_resources: GatherableResources = {};
+    let gatherd_resources: Resources = {};
     for (let creature of this.population) {
       gatherd_resources = sumResources(gatherd_resources, creature.gatherResources());
     }

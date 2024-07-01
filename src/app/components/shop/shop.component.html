@@ -9,7 +9,22 @@
           <div class="col-12">
             <ul>
               @for (structure of available_structures; track $index) {
-              <li>{{structure.base_name}} {{structure.base_cost}}</li>
+              <li>
+                <div class="row">
+                  <div class="col-3">
+                    <img [src]="'assets/icons/structures/' + structure.stats.info.item_name + '.svg'" width="18" />
+                    {{structure.stats.info.front_name}}
+                  </div>
+                  <div class="col-3">
+                    {{structure.stats.base_cost.build}}g
+                  </div>
+                  <div class="col-2">
+                    <button (click)="onBuyClick(structure)">
+                      Buy
+                    </button>
+                  </div>
+                </div>
+              </li>
               }
             </ul>
           </div>

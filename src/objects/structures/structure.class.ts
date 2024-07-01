@@ -1,14 +1,15 @@
 import { GameEventFunction } from "../game";
 import { Game } from "../game.class";
+import { StructureStats } from "./structures";
 
 export abstract class Structure {
-  public static base_name: string = 'Structure';
-  public static base_cost: number = 1;
-  public static base_maintenance: number = 1;
+  public static stats: StructureStats;
 
-  public abstract get name(): string;
-  public abstract get cost(): number;
+  public abstract name: string;
+
+  public abstract get build_cost(): number;
   public abstract get maintenance(): number;
+  public abstract get item_name(): string;
 
   public abstract onBuildEffect: GameEventFunction;
   public abstract endDayEffect: GameEventFunction;

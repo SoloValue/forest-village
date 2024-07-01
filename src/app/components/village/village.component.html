@@ -1,1 +1,36 @@
-<p>village works!</p>
+<nav>
+  <ul>
+    @for (resource_pair of resources_as_pair; track $index) {
+    <li>{{resource_pair[0]}}: {{resource_pair[1]}}</li>
+    }
+  </ul>
+  <ul>
+    <li>Day: {{current_day}}</li>
+    <li>Population: {{game_state.village.used_space}}/{{game_state.village.total_space}}</li>
+  </ul>
+</nav>
+<main>
+  <h3>Population</h3>
+  <ul>
+    @for (creature of population; track $index) {
+    <li>
+      <img [src]="'assets/icons/creatures/' + creature.item_name + '.svg'" width="20" />
+      {{creature.name}}
+    </li>
+    }
+  </ul>
+
+  <h3>Structures</h3>
+  <ul>
+    @for (structure of structures; track $index) {
+    <li>
+      <img [src]="'assets/icons/structures/' + structure.item_name + '.svg'" width="18" />
+      {{structure.name}}
+    </li>
+    }
+  </ul>
+
+  <app-shop (buyStructureEvent)="onBuyBuilding($event)" />
+
+  <button (click)="nextDay()">Next Day</button>
+</main>

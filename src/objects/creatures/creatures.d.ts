@@ -1,13 +1,12 @@
+import { Resources } from "../village"
+
 export interface CreatureStats {
-  requirements: {
+  info: {
+    item_name: string
+  },
+  base_requirements: {
     space: number,
     daily_food: number
   },
-  gather: GatherableResources
-}
-
-export interface GatherableResources {
-  food?: number,
-  gold?: number,
-  pearl?: number,
+  base_gather: Resources
 }
