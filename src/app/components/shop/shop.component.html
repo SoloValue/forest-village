@@ -4,6 +4,40 @@
       <div class="card-body">
         <div class="row">
           <div class="col-12">
+            Invite a creature
+          </div>
+          <div class="col-12">
+            <ul>
+              @for (creature of available_creatures; track $index) {
+              <li>
+                <div class="row">
+                  <div class="col-4">
+                    <img [src]="'assets/icons/creatures/' + creature.stats.info.item_name + '.svg'" width="20" />
+                    {{creature.stats.info.front_name}}
+                  </div>
+                  <div class="col-3">
+                    {{creature.stats.base_requirements.invite_cost}}f
+                  </div>
+                  <div class="col-2">
+                    <button (click)="onInviteClick(creature)">
+                      Invite
+                    </button>
+                  </div>
+                </div>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
             Shop
           </div>
           <div class="col-12">
@@ -11,8 +45,8 @@
               @for (structure of available_structures; track $index) {
               <li>
                 <div class="row">
-                  <div class="col-3">
-                    <img [src]="'assets/icons/structures/' + structure.stats.info.item_name + '.svg'" width="18" />
+                  <div class="col-4">
+                    <img [src]="'assets/icons/structures/' + structure.stats.info.item_name + '.svg'" width="20" />
                     {{structure.stats.info.front_name}}
                   </div>
                   <div class="col-3">

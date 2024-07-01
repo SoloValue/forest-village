@@ -5,11 +5,15 @@ import { StructureStats } from "./structures";
 export abstract class Structure {
   public static stats: StructureStats;
 
-  public abstract name: string;
+  public abstract get name(): string;
 
   public abstract get build_cost(): number;
   public abstract get maintenance(): number;
   public abstract get item_name(): string;
+
+  public get stats(): StructureStats {
+    return (this.constructor as any).stats;
+  }
 
   public abstract onBuildEffect: GameEventFunction;
   public abstract endDayEffect: GameEventFunction;

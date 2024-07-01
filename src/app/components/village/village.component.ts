@@ -7,6 +7,7 @@ import { Creature } from '../../../objects/creatures/creature.class';
 import { BushFarm } from '../../../objects/structures/bush-farm.class';
 import { Structure } from '../../../objects/structures/structure.class';
 import { ShopComponent } from '../../components/shop/shop.component';
+import { Tent } from '../../../objects/structures/tent.class';
 
 @Component({
   selector: 'app-village',
@@ -39,6 +40,7 @@ export class VillageComponent {
     );
     this.game_state.village.structures.push(
       new BushFarm(this.game_state),
+      new Tent(this.game_state),
     );
 
     const test = new Otter();
@@ -54,5 +56,21 @@ export class VillageComponent {
       this.game_state.village.structures.push(new target());
       this.game_state.village.stored_resources.gold! -= priceToPay;
     }
+  }
+  public onInviteCreature(target: any) {
+    //check for enough space
+    const creature_space: number = target.stats.base_requirements.space;
+    if (this.game_state.village.used_space + creature_space > this.game_state.village.total_space) {
+      return;
+    }
+
+    //check for enough food
+    const priceToPay = target.stats.base_requirements.invite_cost;
+    if (priceToPay > (this.game_state.village.stored_resources.food || 0)) {
+      return;
+    }
+
+    this.game_state.village.stored_resources.food! -= priceToPay;
+    this.game_state.village.population.push(new target(this.game_state));
   }
 }

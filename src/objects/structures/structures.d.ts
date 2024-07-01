@@ -9,5 +9,6 @@ export interface StructureStats {
     build: number,
     maintenance: number,
   },
-  base_production: Resources
+  base_production: Resources,
+  population_space?: number
 }
